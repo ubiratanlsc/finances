@@ -18,12 +18,15 @@ export class Transaction {
     local: string;
 
     @Column()
-    cartao: string
+    cartao: string;
 
     @Column()
-    categoria: string
+    categoria: string;
 
     @Column()
-    subcategoria: string
+    subcategoria: string;
+
+    @Column('text')
+    recorrente: string;
 }
 

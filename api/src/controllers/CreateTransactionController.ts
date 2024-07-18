@@ -14,6 +14,7 @@ class CreateTransactionController {
         const cartao = request.body.cartao
         const categoria = request.body.categoria
         const subcategoria = request.body.subcategoria
+        const recorrente = request.body.recorrente
         console.log(request.body);
 
         if (valorString?.length === 0) {
@@ -21,7 +22,7 @@ class CreateTransactionController {
         }
         const valor = parseFloat(valorString.replace("R$ ", "").replace(",", "."));
 
-        const user = await createTransactionServeice.execute({ id, valor, data, hora, local, cartao, categoria, subcategoria })
+        const user = await createTransactionServeice.execute({ id, valor, data, hora, local, cartao, categoria, subcategoria, recorrente })
         return response.status(201).json({ user })
 
     }
