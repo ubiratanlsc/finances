@@ -9,10 +9,9 @@ interface ITransaction {
      cartao: string;
      categoria: string;
      subcategoria: string;
-     recorrente: string;
 }
 class CreateTransactionService {
-     async execute({ valor, data, hora, local, cartao, categoria, subcategoria, recorrente }: ITransaction) {
+     async execute({ valor, data, hora, local, cartao, categoria, subcategoria }: ITransaction) {
 
           const transaction = await getRepository(Transaction)
                .createQueryBuilder("transaction")
@@ -27,8 +26,7 @@ class CreateTransactionService {
                          local: local,
                          cartao: cartao,
                          categoria: categoria,
-                         subcategoria: subcategoria,
-                         recorrente: recorrente,
+                         subcategoria: subcategoria
                     }
                ])
                .execute();

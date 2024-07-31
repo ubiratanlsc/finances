@@ -1,27 +1,21 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity('transaction')
-export class Transaction {
+@Entity('assinatura')
+export class Assinatura {
     @PrimaryGeneratedColumn()
     id: number;
+
+    @Column({ nullable: true })
+    nome: string;
 
     @Column('float')
     valor: number;
 
-    @Column('float')
-    parcela: number;
+    @Column({ nullable: true })
+    ativo: boolean;
 
     @Column()
-    quantidadeParcelas: number;
-
-    @Column('text')
     data: string;
-
-    @Column()
-    hora: string;
-
-    @Column()
-    local: string;
 
     @Column()
     cartao: string;
@@ -31,5 +25,9 @@ export class Transaction {
 
     @Column()
     subcategoria: string;
+
+    @Column()
+    conta: string;
+
 }
 

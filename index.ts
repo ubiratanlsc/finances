@@ -19,6 +19,6 @@ server.use(express.json())
 server.use(router)
 
 server.listen(5000, () => {
-     console.log('Server online caraio, ta na porta 5000 http://localhost:5000/usuarios');
+     console.log('Server online, porta 5000 http://localhost:5000');
 
 })

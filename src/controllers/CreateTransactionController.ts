@@ -22,7 +22,7 @@ class CreateTransactionController {
         }
         const valor = parseFloat(valorString.replace("R$ ", "").replace(",", "."));
 
-        const user = await createTransactionServeice.execute({ id, valor, data, hora, local, cartao, categoria, subcategoria, recorrente })
+        const user = await createTransactionServeice.execute({ id, valor, data, hora, local, cartao, categoria, subcategoria })
         return response.status(201).json({ user })
 
     }
