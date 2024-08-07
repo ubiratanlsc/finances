@@ -3,6 +3,8 @@ import { Transaction } from "../entities/Transaction";
 interface ITransaction {
      id: string,
      valor: number;
+     valorParcela: number;
+     quantidadeParcelas: number;
      data: string;
      hora: string;
      local: string;
@@ -11,7 +13,7 @@ interface ITransaction {
      subcategoria: string;
 }
 class CreateTransactionService {
-     async execute({ valor, data, hora, local, cartao, categoria, subcategoria }: ITransaction) {
+     async execute({ valor, valorParcela, quantidadeParcelas, data, hora, local, cartao, categoria, subcategoria }: ITransaction) {
 
           const transaction = await getRepository(Transaction)
                .createQueryBuilder("transaction")
@@ -21,6 +23,8 @@ class CreateTransactionService {
                .values([
                     {
                          valor: valor,
+                         parcela: valorParcela,
+                         quantidadeParcelas: quantidadeParcelas,
                          data: data,
                          hora: hora,
                          local: local,

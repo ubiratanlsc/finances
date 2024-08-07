@@ -1,19 +1,28 @@
-import { getRepository} from 'typeorm'
+import { getRepository } from 'typeorm'
 import { Usuario } from '../entities/Usuario'
+import { Assinatura } from '../entities/Assinatura';
+import { Transaction } from '../entities/Transaction';
 
 
 
 
 class GetAllUserService {
-    async execute() {            
+    async execute() {
         const usuarios = await getRepository(Usuario)
             .createQueryBuilder('usuarios')
             .select()
             .getMany()
+        const assinaturas = await getRepository(Assinatura)
+            .createQueryBuilder('assinaturas')
+            .select()
+            .getMany()
+        const transacao = await getRepository(Transaction)
+            .createQueryBuilder('transaction')
+            .select()
+            .getMany()
 
-    console.log(usuarios);
-    return usuarios;
-    
+        return [...usuarios, ...assinaturas, ...transacao];
+
     }
 }
 export { GetAllUserService }
