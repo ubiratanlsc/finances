@@ -4,7 +4,6 @@ import { v4 as uuid } from "uuid"
 
 class CreateTransactionController {
     async handle(request: Request, response: Response) {
-        console.log(request.body);
 
         const createTransactionServeice = new CreateTransactionService();
         const id = request.body.id;
@@ -21,8 +20,8 @@ class CreateTransactionController {
         if (valorString?.length === 0) {
             return response.status(400).json({ mensagem: "Valor Obrigatorio" })
         }
-        const valor = parseFloat(valorString.replace("R$ ", "").replace(",", "."));
-        const valorParcela = parseFloat(parcela.replace("R$ ", "").replace(",", "."));
+        const valor = parseFloat(valorString.replace("R$", "").replace(",", "."));
+        const valorParcela = parseFloat(parcela.replace("R$", "").replace(",", "."));
 
         const user = await createTransactionServeice.execute({ id, valor, valorParcela, quantidadeParcelas, data, hora, local, cartao, categoria, subcategoria })
         return response.status(201).json({ user })
